@@ -9,9 +9,11 @@ import {
 } from 'react-native'
 import colors from '../config/colors'
 import AppButton from '../components/AppButton'
+import { borderLeftColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes'
 const WelcomeScreen = ({ navigation }) => {
   return (
     <ImageBackground
+      blurRadius={2}
       source={require('../assets/bg.jpg')}
       resizeMode='cover'
       style={styles.image}
@@ -20,7 +22,12 @@ const WelcomeScreen = ({ navigation }) => {
         title='Go to Details'
         onPress={() => navigation.navigate('TweetsDetails')}
       /> */}
-      <Image style={styles.logo} source={require('../assets/logo.jpg')} />
+      <View style={styles.bandContainer}>
+        <Image style={styles.logo} source={require('../assets/logo.jpg')} />
+
+        <Text style={styles.text}>Welcome!</Text>
+      </View>
+
       <View style={styles.btnContainer}>
         <AppButton
           title='Log In'
@@ -50,11 +57,24 @@ const styles = StyleSheet.create({
     padding: 20,
   },
 
+  bandContainer: {
+    color: 'pink',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    position: 'absolute',
+    top: 100,
+  },
   logo: {
     width: 50,
     height: 50,
-    position: 'absolute',
-    top: 50,
+  },
+  text: {
+    fontSize: 25,
+    color: colors.priamaryColor,
+    fontWeight: 'bold',
+    paddingVertical: 10,
+    letterSpacing: 2,
   },
 })
 export default WelcomeScreen
