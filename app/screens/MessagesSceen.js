@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   StyleSheet,
   Text,
@@ -9,13 +9,13 @@ import {
   StatusBar,
 } from 'react-native'
 
-import Constants from 'expo-constants'
+// import Constants from 'expo-constants'
 
 import ListItem from '../components/ListItem'
 import AppScreen from '../components/AppScreen'
 import DeleteItem from '../components/DeleteItem'
 
-const msg = [
+const msgList = [
   {
     id: 1,
     img: require('../assets/bg.jpg'),
@@ -31,7 +31,11 @@ const msg = [
   },
 ]
 const MessagesSceen = () => {
-  console.log(Constants)
+  const [msg, setMsg] = useState(msgList)
+
+  const deleteHandel = (message) => {
+    setMsg(msg.filter((item) => item.id !== message.id))
+  }
   return (
     <AppScreen>
       <FlatList
@@ -42,7 +46,9 @@ const MessagesSceen = () => {
             image={item.img}
             name={item.name}
             description={item.description}
-            renderRightActions={() => <DeleteItem />}
+            renderRightActions={() => (
+              <DeleteItem onPress={() => deleteHandel(item)} />
+            )}
           />
         )}
         ItemSeparatorComponent={() => (
