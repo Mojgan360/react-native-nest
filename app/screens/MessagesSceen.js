@@ -42,7 +42,7 @@ const MessagesSceen = () => {
             image={item.img}
             name={item.name}
             description={item.description}
-            renderRightActions={DeleteItem}
+            renderRightActions={() => <DeleteItem />}
           />
         )}
         ItemSeparatorComponent={() => (
