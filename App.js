@@ -20,13 +20,18 @@ import WelcomeScreen from './app/screens/WelcomeScreen'
 import Tweets from './app/screens/Tweets'
 import TweetsDetails from './app/screens/TweetsDetails'
 import ViewImageScreen from './app/screens/ViewImageScreen'
-
+import CardScreen from './app/screens/CardScreen'
+import ListingDetailsScreen from './app/screens/ListingDetailsScreen'
+import MessagesSceen from './app/screens/MessagesSceen'
 const Stack = createNativeStackNavigator()
 
 export default function App() {
   return (
+    <MessagesSceen />
+    // <ListingDetailsScreen />
+    // <CardScreen />
     // <ViewImageScreen />
-    <WelcomeScreen />
+    // <WelcomeScreen />
     // <NavigationContainer>
     //   <Stack.Navigator>
     //     <Stack.Screen name='Home' component={WelcomeScreen} />
