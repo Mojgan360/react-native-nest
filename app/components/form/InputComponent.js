@@ -9,13 +9,8 @@ const InputComponent = () => {
   return (
     <AppScreen>
       <View style={styles.container}>
-        <Text>{firstName}</Text>
-        <TextInput
-          placeholder='hello'
-          onChangeText={(text) => setFirstName(text)}
-        />
+        <AppTextInput placeholder='first name' icon='email' />
       </View>
-      <AppTextInput placeholder='first name' />
     </AppScreen>
   )
 }

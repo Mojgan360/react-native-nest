@@ -1,29 +1,22 @@
 import React from 'react'
-import { View, StyleSheet, TextInput } from 'react-native'
+import { View, StyleSheet, TextInput, Platform } from 'react-native'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 
-import AppIcon from './AppIcone'
 import colors from '../config/colors'
 
-function AppTextInput({
-  placeholder,
-  width = '100%',
-  iconType,
-  iconSize = 30,
-  ...otherProps
-}) {
+function AppTextInput({ icon, ...othersProps }) {
   return (
-    <View style={[styles.container, { width }]}>
-      <AppIcon
-        name={iconType}
-        size={iconSize}
-        backgroundColor={colors.priamaryColor}
-        color={colors.grayColor}
-      />
-      <TextInput
-        style={styles.text}
-        placeholder={placeholder}
-        {...otherProps}
-      />
+    <View style={styles.container}>
+      {icon && (
+        <MaterialCommunityIcons
+          name={icon}
+          size={30}
+          color={colors.secondaryColor}
+          style={styles.icon}
+        />
+      )}
+
+      <TextInput style={StyleSheet.textInput} {...othersProps} />
     </View>
   )
 }
@@ -35,19 +28,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     padding: 15,
     marginVertical: 10,
-    shadowColor: colors.priamaryColor,
-    shadowOffset: {
-      width: 2,
-      height: 3,
-    },
-    shadowOpacity: 1,
-    shadowRadius: 3,
+    marginHorizontal: 20,
+    shadowColor: colors.smokyBlackColor,
   },
-  text: {
+  textInput: {
     fontSize: 18,
-    fontFamily: Platform.OS === 'android' ? 'Roboto' : 'Avenir',
-    marginLeft: 10,
-    flex: 1,
+    // fontFamily: Platform.OS === 'android' ? 'Roboto' : 'Avenir',
+    letterSpacing: 2,
+    color: colors.smokyBlackColor,
+    color: 'red',
+  },
+  icon: {
+    marginRight: 5,
   },
 })
 
