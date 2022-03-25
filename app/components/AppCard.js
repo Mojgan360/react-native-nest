@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   price: {
-    color: '#000',
+    color: colors.smokyBlackColor,
     fontWeight: 'bold',
     fontSize: 25,
   },
