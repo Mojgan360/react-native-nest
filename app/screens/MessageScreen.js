@@ -10,11 +10,18 @@ import {
 } from 'react-native'
 import AppIcone from '../components/AppIcone'
 import AppScreen from '../components/AppScreen'
+import ListItem from '../components/ListItem'
 
 const MessageScreen = () => {
   return (
     <AppScreen>
-      <AppIcone size={60} name='email' bgColor='green' iconeColor='gold' />
+      <ListItem
+        name='sam'
+        description='nnnnn'
+        ImageComponent={
+          <AppIcone size={60} name='email' bgColor='green' iconeColor='gold' />
+        }
+      />
     </AppScreen>
   )
 }
