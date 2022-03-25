@@ -26,11 +26,13 @@ import MessagesSceen from './app/screens/MessagesSceen'
 import MessageScreen from './app/screens/MessageScreen'
 import AccountScreen from './app/screens/AccountScreen'
 import ListingCardScreen from './app/screens/ListingCardScreen'
+import InputComponent from './app/components/form/InputComponent'
 const Stack = createNativeStackNavigator()
 
 export default function App() {
   return (
-    <ListingCardScreen />
+    <InputComponent />
+    // <ListingCardScreen />
     // <AccountScreen />
     // <MessageScreen />
     // <MessagesSceen />
