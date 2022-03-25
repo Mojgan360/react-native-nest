@@ -29,6 +29,13 @@ const msgList = [
     name: 'T2',
     description: 'd1',
   },
+  {
+    id: 3,
+    img: require('../assets/logo.jpg'),
+
+    name: 'T2',
+    description: 'd1',
+  },
 ]
 const MessagesSceen = () => {
   const [msg, setMsg] = useState(msgList)
