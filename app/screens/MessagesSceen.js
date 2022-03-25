@@ -39,6 +39,7 @@ const msgList = [
 ]
 const MessagesSceen = () => {
   const [msg, setMsg] = useState(msgList)
+  const [refreshing, setRefreshing] = useState(false)
 
   const deleteHandel = (message) => {
     setMsg(msg.filter((item) => item.id !== message.id))
@@ -63,6 +64,17 @@ const MessagesSceen = () => {
             style={{ height: 1, width: '100%', backgroundColor: '#808080' }}
           />
         )}
+        refreshing={refreshing}
+        onRefresh={() => {
+          setMsg([
+            {
+              id: 1,
+              img: require('../assets/bg.jpg'),
+              name: 'T1',
+              description: 'd1-refresh',
+            },
+          ])
+        }}
       />
     </AppScreen>
   )
