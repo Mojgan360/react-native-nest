@@ -15,7 +15,7 @@ const InputComponent = () => {
           onChangeText={(text) => setFirstName(text)}
         />
       </View>
-      <AppTextInput />
+      <AppTextInput placeholder='first name' />
     </AppScreen>
   )
 }

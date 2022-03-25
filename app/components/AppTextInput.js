@@ -30,12 +30,12 @@ function AppTextInput({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.secondaryColor,
+    backgroundColor: colors.grayColor,
     borderRadius: 25,
     flexDirection: 'row',
     padding: 15,
     marginVertical: 10,
-    shadowColor: colors.yellowColor,
+    shadowColor: colors.priamaryColor,
     shadowOffset: {
       width: 2,
       height: 3,
