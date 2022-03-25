@@ -93,6 +93,7 @@ const styles = StyleSheet.create({
   logout: {
     position: 'absolute',
     bottom: 30,
+    right: 20,
   },
 })
 
