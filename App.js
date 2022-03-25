@@ -23,11 +23,12 @@ import ViewImageScreen from './app/screens/ViewImageScreen'
 import CardScreen from './app/screens/CardScreen'
 import ListingDetailsScreen from './app/screens/ListingDetailsScreen'
 import MessagesSceen from './app/screens/MessagesSceen'
+import MessageScreen from './app/screens/MessageScreen'
 const Stack = createNativeStackNavigator()
 
 export default function App() {
   return (
-    <MessagesSceen />
+    <MessageScreen />
     // <ListingDetailsScreen />
     // <CardScreen />
     // <ViewImageScreen />
