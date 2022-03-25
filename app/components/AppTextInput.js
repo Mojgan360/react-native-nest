@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
   },
   textInput: {
     fontSize: 18,
-    // fontFamily: Platform.OS === 'android' ? 'Roboto' : 'Avenir',
-    letterSpacing: 2,
+    fontFamily: Platform.OS === 'android' ? 'Roboto' : 'Avenir',
+    letterSpacing: 1,
     color: colors.smokyBlackColor,
     color: 'red',
   },

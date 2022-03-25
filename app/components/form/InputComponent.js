@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { View, Text, TextInput, StyleSheet } from 'react-native'
+import AppPicker from '../AppPicker'
 import AppScreen from '../AppScreen'
 import AppTextInput from '../AppTextInput'
 
@@ -9,7 +10,8 @@ const InputComponent = () => {
   return (
     <AppScreen>
       <View style={styles.container}>
-        <AppTextInput placeholder='first name' icon='email' />
+        <AppPicker placeholder='Category' icon='apps' />
+        <AppTextInput placeholder='Email' icon='email' />
       </View>
     </AppScreen>
   )

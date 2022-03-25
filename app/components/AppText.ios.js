@@ -7,9 +7,7 @@ const AppText = ({ children }) => {
 const styles = StyleSheet.create({
   text: {
     fontSize: 20,
-    backgroundColor: 'tomato',
     fontFamily: 'Avenir',
-    color: 'green',
   },
 })
 export default AppText
