@@ -1,58 +1,61 @@
-import React from 'react'
-import { TouchableOpacity, StyleSheet, Text, View, Image } from 'react-native'
-import Swipeable from 'react-native-gesture-handler/Swipeable'
-import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import React from "react";
+import {
+  View,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  TouchableHighlight,
+} from "react-native";
+import AppText from "./AppText";
+import Swipeable from "react-native-gesture-handler/Swipeable";
 
-const ListItem = ({
+import colors from "../config/colors";
+
+function ListItem({
+  title,
+  subTitle,
   image,
-  name,
-  description,
+  IconComponent,
+  onPress,
   renderRightActions,
-  ImageComponent,
-}) => {
+}) {
   return (
-    <GestureHandlerRootView>
-      <Swipeable renderRightActions={renderRightActions}>
-        <TouchableOpacity>
-          <View style={styles.userContainer}>
-            {ImageComponent}
-
-            {image && <Image style={styles.userImage} source={image} />}
-            <View style={styles.infoWrapper}>
-              <Text style={styles.userInfo}>{name}</Text>
-              {description && (
-                <Text style={styles.description}>{description}</Text>
-              )}
-            </View>
+    <Swipeable renderRightActions={renderRightActions}>
+      <TouchableHighlight underlayColor={colors.light} onPress={onPress}>
+        <View style={styles.container}>
+          {IconComponent}
+          {image && <Image style={styles.image} source={image} />}
+          <View style={styles.detailsContainer}>
+            <AppText style={styles.title}>{title}</AppText>
+            {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}
           </View>
-        </TouchableOpacity>
-      </Swipeable>
-    </GestureHandlerRootView>
-  )
+        </View>
+      </TouchableHighlight>
+    </Swipeable>
+  );
 }
 
 const styles = StyleSheet.create({
-  userContainer: {
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    flexDirection: 'row',
-    marginVertical: 20,
-    marginHorizontal: 10,
+  container: {
+    flexDirection: "row",
+    padding: 15,
+    backgroundColor: colors.white,
   },
-  userImage: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
-    marginHorizontal: 20,
-  },
-  infoWrapper: {
+  detailsContainer: {
     marginLeft: 10,
+    justifyContent: "center",
   },
-  userInfo: {
-    color: 'blue',
+  image: {
+    width: 70,
+    height: 70,
+    borderRadius: 35,
   },
-  description: {
-    color: '#808080',
+  subTitle: {
+    color: colors.medium,
   },
-})
-export default ListItem
+  title: {
+    fontWeight: "500",
+  },
+});
+
+export default ListItem;

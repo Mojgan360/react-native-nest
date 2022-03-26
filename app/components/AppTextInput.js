@@ -1,46 +1,37 @@
-import React from 'react'
-import { View, StyleSheet, TextInput, Platform } from 'react-native'
-import { MaterialCommunityIcons } from '@expo/vector-icons'
+import React from "react";
+import { View, TextInput, StyleSheet } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import colors from '../config/colors'
+import defaultStyles from "../config/styles";
 
-function AppTextInput({ icon, ...othersProps }) {
+function AppTextInput({ icon, ...otherProps }) {
   return (
     <View style={styles.container}>
       {icon && (
         <MaterialCommunityIcons
           name={icon}
-          size={30}
-          color={colors.secondaryColor}
+          size={20}
+          color={defaultStyles.colors.medium}
           style={styles.icon}
         />
       )}
-
-      <TextInput style={StyleSheet.textInput} {...othersProps} />
+      <TextInput style={defaultStyles.text} {...otherProps} />
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.grayColor,
+    backgroundColor: defaultStyles.colors.light,
     borderRadius: 25,
-    flexDirection: 'row',
+    flexDirection: "row",
+    width: "100%",
     padding: 15,
     marginVertical: 10,
-    marginHorizontal: 20,
-    shadowColor: colors.smokyBlackColor,
-  },
-  textInput: {
-    fontSize: 18,
-    fontFamily: Platform.OS === 'android' ? 'Roboto' : 'Avenir',
-    letterSpacing: 1,
-    color: colors.smokyBlackColor,
-    color: 'red',
   },
   icon: {
-    marginRight: 5,
+    marginRight: 10,
   },
-})
+});
 
-export default AppTextInput
+export default AppTextInput;

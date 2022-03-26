@@ -1,63 +1,28 @@
-// import { StatusBar } from 'expo-status-bar'
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  Button,
-  Platform,
-  StatusBar,
-  Dimensions,
-} from 'react-native'
-import {
-  useDimensions,
-  useDeviceOrientation,
-} from '@react-native-community/hooks'
+import React, { useState } from 'react'
 
-import { NavigationContainer } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import WelcomeScreen from './app/screens/WelcomeScreen'
-import Tweets from './app/screens/Tweets'
-import TweetsDetails from './app/screens/TweetsDetails'
-import ViewImageScreen from './app/screens/ViewImageScreen'
-import CardScreen from './app/screens/CardScreen'
-import ListingDetailsScreen from './app/screens/ListingDetailsScreen'
-import MessagesSceen from './app/screens/MessagesSceen'
-import MessageScreen from './app/screens/MessageScreen'
-import AccountScreen from './app/screens/AccountScreen'
-import ListingCardScreen from './app/screens/ListingCardScreen'
-import InputComponent from './app/components/form/InputComponent'
-const Stack = createNativeStackNavigator()
+import Screen from './app/components/Screen'
+import AppPicker from './app/components/AppPicker'
+import AppTextInput from './app/components/AppTextInput'
+
+const categories = [
+  { label: 'Furniture', value: 1 },
+  { label: 'Clothing', value: 2 },
+  { label: 'Cameras', value: 3 },
+]
 
 export default function App() {
+  const [category, setCategory] = useState(categories[0])
+
   return (
-    <InputComponent />
-    // <ListingCardScreen />
-    // <AccountScreen />
-    // <MessageScreen />
-    // <MessagesSceen />
-    // <ListingDetailsScreen />
-    // <CardScreen />
-    // <ViewImageScreen />
-    // <WelcomeScreen />
-    // <NavigationContainer>
-    //   <Stack.Navigator>
-    //     <Stack.Screen name='Home' component={WelcomeScreen} />
-    //     <Stack.Screen name='TweetsDetails' component={TweetsDetails} />
-    //   </Stack.Navigator>
-    // </NavigationContainer>
+    <Screen>
+      <AppPicker
+        selectedItem={category}
+        onSelectItem={(item) => setCategory(item)}
+        items={categories}
+        icon='apps'
+        placeholder='Category'
+      />
+      <AppTextInput icon='email' placeholder='Email' />
+    </Screen>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
-
-    // alignItems: 'center',
-    // justifyContent: 'center',
-  },
-})

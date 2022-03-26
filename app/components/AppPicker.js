@@ -1,86 +1,81 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import {
   View,
   StyleSheet,
-  Platform,
   TouchableWithoutFeedback,
   Modal,
-  Text,
   Button,
-} from 'react-native'
+  FlatList,
+} from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import AppText from "./AppText";
+import Screen from "./Screen";
+import defaultStyles from "../config/styles";
+import PickerItem from "./PickerItem";
 
-import { MaterialCommunityIcons } from '@expo/vector-icons'
+function AppPicker({ icon, items, onSelectItem, placeholder, selectedItem }) {
+  const [modalVisible, setModalVisible] = useState(false);
 
-import colors from '../config/colors'
-import AppText from '../components/AppText'
-import AppScreen from './AppScreen'
-
-function AppPicker({ icon, placeholder }) {
-  const [isVisible, setIsVisible] = useState(false)
-  console.log(isVisible)
   return (
     <>
-      <TouchableWithoutFeedback onPress={() => setIsVisible(true)}>
+      <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
         <View style={styles.container}>
-          <View style={styles.category}>
-            {icon && (
-              <MaterialCommunityIcons
-                name={icon}
-                size={30}
-                color={colors.secondaryColor}
-                style={styles.icon}
-              />
-            )}
-            <AppText style={styles.text}>{placeholder}</AppText>
-          </View>
-
+          {icon && (
+            <MaterialCommunityIcons
+              name={icon}
+              size={20}
+              color={defaultStyles.colors.medium}
+              style={styles.icon}
+            />
+          )}
+          <AppText style={styles.text}>
+            {selectedItem ? selectedItem.label : placeholder}
+          </AppText>
           <MaterialCommunityIcons
-            name='chevron-down'
-            size={30}
-            color={colors.secondaryColor}
+            name="chevron-down"
+            size={20}
+            color={defaultStyles.colors.medium}
           />
         </View>
       </TouchableWithoutFeedback>
-      <AppScreen>
-        <Modal visible={isVisible} animationType='slide'>
-          <View>
-            <Text style={{ marginTop: 200 }}></Text>
-            <Button title='back' onPress={() => setIsVisible(false)} />
-          </View>
-        </Modal>
-      </AppScreen>
+      <Modal visible={modalVisible} animationType="slide">
+        <Screen>
+          <Button title="Close" onPress={() => setModalVisible(false)} />
+          <FlatList
+            data={items}
+            keyExtractor={(item) => item.value.toString()}
+            renderItem={({ item }) => (
+              <PickerItem
+                label={item.label}
+                onPress={() => {
+                  setModalVisible(false);
+                  onSelectItem(item);
+                }}
+              />
+            )}
+          />
+        </Screen>
+      </Modal>
     </>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.grayColor,
+    backgroundColor: defaultStyles.colors.light,
     borderRadius: 25,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    width: "100%",
     padding: 15,
     marginVertical: 10,
-    marginHorizontal: 20,
-    shadowColor: colors.smokyBlackColor,
   },
-  category: {
-    width: '90%',
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-
   icon: {
-    marginRight: 5,
+    marginRight: 10,
   },
   text: {
-    fontSize: 18,
-    fontFamily: Platform.OS === 'android' ? 'Roboto' : 'Avenir',
-    letterSpacing: 2,
-    color: colors.smokyBlackColor,
+    flex: 1,
   },
-})
+});
 
-export default AppPicker
+export default AppPicker;

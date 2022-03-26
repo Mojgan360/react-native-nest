@@ -1,73 +1,50 @@
-import React from 'react'
-import { ImageBackground, StyleSheet, Text, View, Image } from 'react-native'
-import colors from '../config/colors'
-import AppButton from '../components/AppButton'
+import React from "react";
+import { ImageBackground, StyleSheet, View, Image, Text } from "react-native";
+import AppButton from "../components/AppButton";
 
-const WelcomeScreen = ({ navigation }) => {
+function WelcomeScreen(props) {
   return (
     <ImageBackground
-      blurRadius={2}
-      source={require('../assets/bg.jpg')}
-      resizeMode='cover'
-      style={styles.image}
+      blurRadius={10}
+      style={styles.background}
+      source={require("../assets/background.jpg")}
     >
-      {/* <Button
-        title='Go to Details'
-        onPress={() => navigation.navigate('TweetsDetails')}
-      /> */}
-      <View style={styles.bandContainer}>
-        <Image style={styles.logo} source={require('../assets/logo.jpg')} />
-
-        <Text style={styles.text}>Welcome!</Text>
+      <View style={styles.logoContainer}>
+        <Image style={styles.logo} source={require("../assets/logo-red.png")} />
+        <Text style={styles.tagline}>Sell What You Don't Need</Text>
       </View>
-
-      <View style={styles.btnContainer}>
-        <AppButton
-          title='Log In'
-          onPress={() => console.log('login')}
-          color={colors.secondaryColor}
-        />
-        <AppButton
-          title='Sign Up'
-          onPress={() => console.log('signup')}
-          color={colors.secondaryColor}
-        />
+      <View style={styles.buttonsContainer}>
+        <AppButton title="Login" />
+        <AppButton title="Register" color="secondary" />
       </View>
     </ImageBackground>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
-  image: {
+  background: {
     flex: 1,
-    width: '100%',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: "flex-end",
+    alignItems: "center",
   },
-  btnContainer: {
-    width: '100%',
+  buttonsContainer: {
     padding: 20,
-  },
-
-  bandContainer: {
-    color: 'pink',
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    position: 'absolute',
-    top: 100,
+    width: "100%",
   },
   logo: {
-    width: 50,
-    height: 50,
+    width: 100,
+    height: 100,
   },
-  text: {
+  logoContainer: {
+    position: "absolute",
+    top: 70,
+    alignItems: "center",
+  },
+  tagline: {
     fontSize: 25,
-    color: colors.priamaryColor,
-    fontWeight: 'bold',
-    paddingVertical: 10,
-    letterSpacing: 2,
+    fontWeight: "600",
+    paddingVertical: 20,
   },
-})
-export default WelcomeScreen
+});
+
+export default WelcomeScreen;
